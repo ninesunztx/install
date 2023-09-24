@@ -21,6 +21,9 @@ class Tool(BaseTool):
         PrintUtils.print_info("下载完成，接下来为您安装QQ")
         # 更新源
         CmdTask("sudo apt update").run()
+        # 修复依赖项
+        CmdTask("sudo apt-get install -f").run()
+        CmdTask("sudo apt install libgtk2.0-0 ").run()
         # 解压安装包
         CmdTask("sudo dpkg -i /tmp/qq.deb").run()
         CmdTask("rm -rf /tmp/vscode.deb").run()
