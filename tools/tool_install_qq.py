@@ -7,7 +7,7 @@ from .base import run_tool_file
 class Tool(BaseTool):
     def __init__(self):
         self.type = BaseTool.TYPE_INSTALL
-        self.name = "一键安装Clash"
+        self.name = "一键安装QQ"
         self.autor = '五柳小生'
 
     def install_qq(self):
@@ -21,12 +21,9 @@ class Tool(BaseTool):
         PrintUtils.print_info("下载完成，接下来为您安装QQ")
         # 更新源
         CmdTask("sudo apt update").run()
-        # 修复依赖项
-        CmdTask("sudo apt-get install -f").run()
-        CmdTask("sudo apt install libgtk2.0-0 ").run()
         # 解压安装包
         CmdTask("sudo dpkg -i /tmp/qq.deb").run()
-        CmdTask("rm -rf /tmp/vscode.deb").run()
+        CmdTask("rm -rf /tmp/qq.deb").run()
         PrintUtils.print_info("安装完成~")
 
 
